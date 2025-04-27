@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mile's </title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <audio autoplay loop>
+        <source src="musica/fearless.mp3" type="audio/mpeg">
+      </audio>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="img">
+                        <ul class="person-list">
+                            <li><a href="./webpis/pagina_pessoa1.html">Susana Kissoon </a></li>
+                            <li><a href="./webpis/pagina_pessoa2.html">Donna Rafiq </a></li>
+                            <li><a href="./webpis/pagina_pessoa3.html">Hira Fatima</a></li>
+                            <li><a href="./webpis/pagina_pessoa4.html">Andreza.C</a></li>
+                            <li><a href="./webpis/pagina_pessoa5.html">Geovana.R</a></li>
+                            <li><a href="./webpis/pagina_pessoa6.html">Chris Amancio</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+        });
+    </script>
+</body>
+</html>

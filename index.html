@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Casamento H&M</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ <audio autoplay loop>
+    <source src="musica/apt.mp3" type="audio/mpeg">
+ </audio>
+      
+  <div class="instrucoes">
+    <h1>Pegue o bouquet antes da hora  💐<br> <br> Catch the bouquet before it's too late 💐</h1>
+  </div>
+  <div class="itens">
+    <img src="images/bouquet.png" alt="Bouquet" id="bouquet" onclick="foundItem('bouquet')">
+  </div>
+
+  <h2 id="mensagem" style="display: none;" > 🎉 Você venceu a caça ao bouquet! Um convite especial te aguarda.✨ 🎉<br>🎉 You won the bouquet hunt! A special invitation awaits you. ✨🎉</h2>
+  <button id="botaoRedirecionar" style="display: none; margin-bottom: 20px;">Clique aqui!<br>Click here!</button>
+
+
+    <script>
+        const bouquet = document.getElementById('bouquet');
+        const mensagem = document.getElementById('mensagem');
+
+        bouquet.addEventListener('click', () => {
+          mensagem.style.display = 'block'; // Mostra a mensagem
+          bouquet.style.opacity = '0.3'; // Deixa o bouquet mais transparente
+         // Aqui desbloqueamos o botão!
+  const botao = document.getElementById('botaoRedirecionar');
+  botao.style.display = 'block'; // Mostra o botão
+
+  // Estiliza o botão dinamicamente
+  botao.style.padding = "10px 30px";/*15px 30px*/
+  botao.style.fontSize = "16px";
+  botao.style.width = "200px";  // Largura do botão
+  botao.style.height = "60px"; // 200Altura do botão
+  botao.style.borderRadius = "100px";/*50*/
+  botao.style.border = "none";
+  botao.style.backgroundColor = "#4CAF50";
+  botao.style.color = "white";
+  botao.style.cursor = "pointer";
+  botao.style.position = "absolute";
+  botao.style.top = "50%";
+  botao.style.left = "50%";
+  botao.style.transform = "translate(-50%, -50%)";
+  botao.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+  botao.style.transition = "background-color 0.3s";
+
+  // Hover do botão
+  botao.addEventListener("mouseover", function () {
+    botao.style.backgroundColor = "#45a049";
+  });
+  botao.addEventListener("mouseout", function () {
+    botao.style.backgroundColor = "#4CAF50";
+  });
+
+  // Redirecionamento
+  botao.addEventListener("click", function () {
+    window.location.href = "web.4/index.html";
+  }); 
+            // Função para "desbloquear o convite"
+       function desbloquearConvite() {
+        document.getElementById("mensagem").style.display = "block";
+        document.querySelector(".container").style.display = "grid";
+        }
+        });
+
+        // Faz o bouquet fugir do cursor com limite de tela
+        document.addEventListener('mousemove', (e) => {
+          const bouquetRect = bouquet.getBoundingClientRect();
+          const distance = 150;//rapides da flor 100original
+
+         const mouseX = e.clientX;
+         const mouseY = e.clientY;
+
+         const bouquetX = bouquetRect.left + bouquetRect.width / 2;
+         const bouquetY = bouquetRect.top + bouquetRect.height / 2;
+
+         const deltaX = bouquetX - mouseX;
+         const deltaY = bouquetY - mouseY;
+         const distanceToMouse = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+         if (distanceToMouse < distance) {
+           const moveX = (deltaX / distanceToMouse) * 300;
+           const moveY = (deltaY / distanceToMouse) * 300;
+
+           const currentLeft = parseFloat(getComputedStyle(bouquet).left);
+           const currentTop = parseFloat(getComputedStyle(bouquet).top);
+
+          // Novo valor calculado
+           let newLeft = currentLeft + moveX;
+           let newTop = currentTop + moveY;
+
+          // Limites da tela
+          const maxLeft = window.innerWidth - bouquetRect.width;
+          const maxTop = window.innerHeight - bouquetRect.height;
+
+         // Garante que ele fique dentro da tela
+         const padding = 40;
+         newLeft = Math.max(padding, Math.min(newLeft, maxLeft));
+         newTop = Math.max(padding, Math.min(newTop, maxTop));
+
+        bouquet.style.left = `${newLeft}px`;
+         bouquet.style.top = `${newTop}px`;
+        }
+        
+    });
+    
+      </script>
+  <script src="script.js"></script>
+</body>
+</html>
